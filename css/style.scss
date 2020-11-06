@@ -1,0 +1,1664 @@
+@charset "UTF-8";
+$width-tablet: 992px;
+$width-mobile: 768px;
+$tablet: "screen and (max-width:"+$width-tablet+")";
+$mobile: "screen and (max-width:"+$width-mobile+")";
+$nintendo-color: #e60012;
+$grey: #d6d6d6;
+
+@mixin frame {
+	display: block;
+	overflow: hidden;
+	width: 100%;
+}
+@mixin img {
+	display: block;
+	width: 100%;
+}
+@mixin ir {
+	text-indent: -9999px;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+@mixin subTit {
+	font-size: 15px;
+	font-weight: 400;
+	margin-left: 10px;
+}
+@mixin typePc {
+	position: relative;
+	margin: 10px 0;
+	color: #e60012;
+	font-size: 13px;
+}
+@mixin titP {
+	margin-bottom: 30px;
+	font-size: 18px;
+	font-weight: 800;
+}
+@mixin issueP {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	color: #737373;
+	font-size: 12px;
+}
+@mixin imgEffect {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	opacity: 0.2;
+	content: "";
+}
+@mixin lineUp {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 100%;
+}
+
+#wrap {
+	overflow: hidden;
+	width: 100%;
+	margin: 0 auto;
+}
+header {
+	z-index: 1000;
+	> .header-container {
+		display: flex;
+		width: 100%;
+		height: 72px;
+		@media #{$tablet} {
+			display: block;
+			height: 60px;
+		}
+		> #logo {
+			position: relative;
+			width: 15%;
+			height: 72px;
+			background-color: $nintendo-color;
+			@media #{$tablet} {
+				width: 100%;
+				height: 60px;
+			}
+			> a {
+				display: block;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 122px;
+				height: 30px;
+				margin: -15px 0 0 -60px;
+				@include ir;
+				background-image: url(../images/ntd-logo.png);
+				@media #{$tablet} {
+					left: 30px;
+					width: 96px;
+					height: 23px;
+					margin: -12px 0 0 0;
+					background-size: cover;
+					background-position: 0 -16px;
+				}
+			} //end of a
+		} //end of #logo
+		> nav {
+			width: 100%;
+			z-index: 1000;
+			@media #{$tablet} {
+				width: 100%;
+			}
+			> .btn-nav {
+				display: none;
+				@media #{$tablet} {
+					display: block;
+					position: absolute;
+					top: 15px;
+					right: 120px;
+					width: 30px;
+					height: 30px;
+					@include ir;
+					background-image: url(../images/ntd-head-btn_gnb.png);
+					background-size: cover;
+				}
+			} //end of .btn-nav
+			> #gnb {
+				height: 72px;
+				@media #{$tablet} {
+					display: none;
+					position: absolute;
+					top: 60px;
+					left: 0;
+					width: 100%;
+					z-index: 5000;
+				}
+				> li {
+					float: left;
+					width: 20%;
+					border-right: 1px solid $grey;
+					box-sizing: border-box;
+					@media #{$tablet} {
+						float: initial;
+						width: 100%;
+						&:last-child {
+							border-bottom: 0;
+						}
+					}
+					> a {
+						display: block;
+						height: 72px;
+						font-size: 18px;
+						line-height: 72px;
+						text-align: center;
+						background-color: #fff;
+						white-space: nowrap;
+						@media #{$tablet} {
+							height: 50px;
+							padding-left: 40px;
+							font-weight: 800;
+							font-size: 17px;
+							line-height: 50px;
+							text-align: left;
+							border-bottom: 1px solid $grey;
+						}
+					} //end of a
+					&:hover > a {
+						color: $nintendo-color;
+					} //end of li:hover>a
+					> .gnb-sub {
+						display: none;
+						width: 100%;
+						padding: 15px 0;
+						background-color: #f7f7f7;
+						border: 1px solid $grey;
+						@media #{$tablet} {
+							border-top: 0;
+						}
+						> li {
+							> a {
+								display: block;
+								padding: 10px 20px;
+								font-size: 15px;
+								cursor: pointer;
+								@media #{$tablet} {
+									height: 30px;
+									padding: 0 40px;
+								}
+							} //end of a
+							&:hover > a {
+								color: $nintendo-color;
+							} //end of li:hover>a
+						} //end of li
+					} //end of .gnb-sub
+				} //end of li
+			} //end of #gnb
+		} //end of nav
+		> div {
+			display: flex;
+			width: 212px;
+			@media #{$tablet} {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 120px;
+				height: 60px;
+			}
+			> .eshop {
+				display: block;
+				width: 140px;
+				height: 72px;
+				@include ir;
+				background-image: url(../images/ntd-head-btn_eshop.gif);
+				@media #{$tablet} {
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 60px;
+					height: 60px;
+					background-position: 1px -5px;
+				}
+			} //end of .eshop
+			> .search {
+				display: block;
+				position: relative;
+				width: 72px;
+				height: 72px;
+				background-color: #fff;
+				@media #{$tablet} {
+					width: 60px;
+					height: 60px;
+					background-color: initial;
+				}
+				> span {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: 27px;
+					height: 27px;
+					margin: -14px 0 0 -14px;
+					@include ir;
+					background-image: url(../images/ntd-head-btn_search.png);
+					@media #{$tablet} {
+						width: 30px;
+						height: 30px;
+						margin: -15px 0 0 -15px;
+						background-size: cover;
+						background-position: 0px -14px;
+					}
+				}
+			} //end of .search
+		}
+		fieldset {
+			display: none;
+			overflow: hidden;
+			position: absolute;
+			top: 72px;
+			left: 0;
+			width: 100%;
+			height: 150px;
+			background-color: #f7f7f7;
+			border-bottom: 1px solid #d6d6d6;
+			z-index: 900;
+			@media #{$tablet} {
+				top: 60px;
+			}
+			> div {
+				display: flex;
+				position: absolute;
+				top: 30px;
+				left: 50%;
+				width: 100%;
+				margin-left: -35%;
+				@media #{$tablet} {
+					left: 0;
+					margin-left: 0px;
+				}
+				> input {
+					width: 70%;
+					height: 46px;
+					padding-left: 10px;
+					color: #6a6a6a;
+					font-size: 15px;
+					border: 1px solid #858585;
+					box-sizing: border-box;
+					outline: none;
+					@media #{$tablet} {
+						position: absolute;
+						top: 20%;
+						left: 13%;
+						height: 35px;
+					}
+				} //end of input
+				> .btn-srch {
+					width: 100px;
+					height: 46px;
+					color: #fff;
+					font-size: 15px;
+					background-color: $nintendo-color;
+					border: none;
+					outline: none;
+					@media #{$tablet} {
+						position: absolute;
+						top: 21%;
+						right: 16%;
+						height: 35px;
+					}
+				} //end of .btn-srch
+			} //end of div
+			> .btn-clse {
+				display: block;
+				position: absolute;
+				top: 65%;
+				left: 45%;
+				width: 100px;
+				text-align: center;
+				font-size: 15px;
+				background-color: none;
+				border: none;
+				outline: none;
+				&:before {
+					position: absolute;
+					top: 2px;
+					left: 0px;
+					width: 14px;
+					height: 14px;
+					@include ir;
+					background-image: url(../images/ntd-head-searchBox_ico_close.gif);
+					content: "";
+				}
+			} //end of .btn-clse
+		} //end of fieldset
+	} //end of .header-container
+	> .fixed-eshop {
+		position: fixed;
+		bottom: 50%;
+		right: 0;
+		height: 140px;
+		margin-bottom: -75px;
+		z-index: 1000;
+		@media #{$mobile} {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			bottom: 0;
+			width: 100%;
+			margin-bottom: 0;
+			height: 60px;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+		> a {
+			display: block;
+			overflow: hidden;
+			width: 40px;
+			height: 55px;
+			margin-right: -4px;
+			padding-left: 20px;
+			font-weight: 800;
+			line-height: 55px;
+			border-radius: 10px 0 0 10px;
+			transition: all 0.3s;
+			@media #{$mobile} {
+				width: 48%;
+				height: 35px;
+				margin-right: 0;
+				padding-left: 0;
+				font-size: 13px;
+				font-weight: initial;
+				line-height: 35px;
+				text-align: center;
+				border-radius: 15px;
+				transition: none;
+			}
+			&:before {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 55px;
+				height: 55px;
+				@include ir;
+				background-image: url(../images/ntd-head-ico_purchase_eshop.png);
+				content: "";
+				@media #{$mobile} {
+					display: none;
+				}
+			} //end of a:before
+			&:after {
+				position: absolute;
+				left: 190px;
+				top: 50%;
+				width: 8px;
+				height: 13px;
+				margin-top: -7px;
+				@include ir;
+				background-image: url(../images/ntd-head-ico_purchase_eshop.png);
+				content: "";
+				@media #{$mobile} {
+					left: initial;
+					right: 15px;
+					top: 50%;
+					margin-top: 0;
+					width: 14px;
+					height: 20px;
+					margin-top: -10px;
+				}
+			} //end of a:after
+			&.store {
+				position: absolute;
+				right: 0;
+				top: 0;
+				color: #fe7c0a;
+				border: 4px solid #dc4f0a;
+				background-color: #fe7c0a;
+				@media #{$mobile} {
+					position: relative;
+					color: #fff;
+					border: none;
+					&:hover {
+						background-color: #fe7c0a;
+					}
+				}
+				&:before {
+					background-position: -30px -113px;
+				}
+				&:after {
+					background-position: -20px -233px;
+					@media #{$mobile} {
+						background-position: -9px -275px;
+					}
+				}
+			} //end of .store
+			&.prepaid {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				color: #10cb19;
+				border: 4px solid #01a501;
+				background-color: #10cb19;
+				@media #{$mobile} {
+					position: relative;
+					color: #fff;
+					border: none;
+					&:hover {
+						background-color: #10cb19;
+					}
+				}
+				&:before {
+					background-position: -30px -32px;
+				}
+				&:after {
+					background-position: -20px -200px;
+					@media #{$mobile} {
+						background-position: -9px -275px;
+					}
+				}
+			} //end of .prepaid
+			&:hover {
+				width: 200px;
+				background-color: #fff;
+				&:before {
+					background-image: none;
+				} //end of a:hover:before
+				@media #{$mobile} {
+					width: 48%;
+				}
+			} //end of a:hover
+		} //end of a
+	} //end of .fixed-eshop
+} //end of header
+section {
+	> .main_visual {
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+		height: 685px;
+		@media #{$tablet} {
+			height: 390px;
+			margin-bottom: 80px;
+		}
+		@media #{$mobile} {
+			height: 594px;
+		}
+		.slide-container {
+			display: flex;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 800%;
+			height: 635px;
+			@media #{$tablet} {
+				height: 340px;
+			}
+			@media #{$mobile} {
+				height: 100%;
+				margin-bottom: 80px;
+			}
+			> li {
+				width: calc(100% / 8);
+				height: 100%;
+				@include ir;
+				background-size: cover;
+				background-position: 50% 50%;
+				&:nth-child(1) {
+					background-image: url(../images/ntd-sect-bannar_01.jpg);
+					@media #{$mobile} {
+						background-image: url(../images/ntd-sect-bannar_01-m.jpg);
+					}
+				}
+				&:nth-child(2) {
+					background-image: url(../images/ntd-sect-bannar_02.jpg);
+					@media #{$mobile} {
+						background-image: url(../images/ntd-sect-bannar_02-m.jpg);
+					}
+				}
+				&:nth-child(3) {
+					background-image: url(../images/ntd-sect-bannar_03.jpg);
+					@media #{$mobile} {
+						background-image: url(../images/ntd-sect-bannar_03-m.jpg);
+					}
+				}
+				&:nth-child(4) {
+					background-image: url(../images/ntd-sect-bannar_04.jpg);
+					@media #{$mobile} {
+						background-image: url(../images/ntd-sect-bannar_04-m.jpg);
+					}
+				}
+				&:nth-child(5) {
+					background-image: url(../images/ntd-sect-bannar_05.jpg);
+					@media #{$mobile} {
+						background-image: url(../images/ntd-sect-bannar_05-m.jpg);
+					}
+				}
+				&:nth-child(6) {
+					background-image: url(../images/ntd-sect-bannar_06.jpg);
+					@media #{$mobile} {
+						background-image: url(../images/ntd-sect-bannar_06-m.jpg);
+					}
+				}
+				&:nth-child(7) {
+					background-image: url(../images/ntd-sect-bannar_07.png);
+					@media #{$mobile} {
+						background-image: url(../images/ntd-sect-bannar_07-m.png);
+					}
+				}
+				&:nth-child(8) {
+					background-image: url(../images/ntd-sect-bannar_08.jpg);
+					@media #{$mobile} {
+						background-image: url(../images/ntd-sect-bannar_08-m.jpg);
+					}
+				}
+				> a {
+					display: block;
+					text-indent: -800%;
+				} //end of a
+			} //end of li
+		} //end of .slide-container
+		> .slide-navi {
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			width: 150px;
+			margin: 0 auto;
+			margin-left: -75px;
+			@media #{$tablet} {
+				left: 0;
+				width: 100%;
+				margin-left: 0;
+			}
+			@media #{$mobile} {
+				background-color: rgba(0, 0, 0, 0.5);
+			}
+			> p {
+				height: 50px;
+				font-size: 22px;
+				font-weight: 800;
+				line-height: 50px;
+				text-align: center;
+				@media #{$tablet} {
+					font-size: 18px;
+				}
+				@media #{$mobile} {
+					text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+				}
+			} //end of p
+			> a {
+				display: block;
+				position: absolute;
+				top: 50%;
+				width: 23px;
+				height: 35px;
+				margin-top: -18px;
+				@include ir;
+				background-image: url(../images/ntd-sect-slide-arr.png);
+				background-size: cover;
+			} //end of a
+			.slide-prev {
+				left: 0;
+
+				@media #{$tablet} {
+					left: 20px;
+				}
+			} //end of .slide-prev
+			.slide-next {
+				right: 0;
+				background-position: -23px 0;
+				@media #{$tablet} {
+					right: 20px;
+				}
+			} //end of .slide-next
+		} //end of .slide-navi
+	} //end of .main_visual
+	> .new {
+		position: relative;
+		width: 1200px;
+		margin: 80px auto;
+		@media #{$tablet} {
+			width: 95%;
+			height: 270px;
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+		@media #{$mobile} {
+			width: 90%;
+			height: initial;
+			margin-bottom: 0;
+		}
+		> h2 {
+			font-size: 26px;
+			margin-bottom: 30px;
+			@media #{$tablet} {
+				font-size: 22px;
+				margin-bottom: 20px;
+			}
+			@media #{$mobile} {
+				margin-bottom: 15px;
+			}
+			> span {
+				@include subTit;
+				@media #{$tablet} {
+					display: none;
+				}
+			} //end of span
+		} //end of h2
+		> .more {
+			display: block;
+			position: absolute;
+			top: 10px;
+			right: 0;
+			width: 16px;
+			height: 16px;
+			background-image: url(../images/ntd-ico_more.png);
+			@include ir;
+		} //end of .more
+		> ol {
+			@include lineUp;
+			> li {
+				position: relative;
+				width: 24%;
+				height: 310px;
+				margin-bottom: 50px;
+				@media #{$tablet} {
+					height: 220px;
+					margin-bottom: 0;
+					&:nth-of-type(5),
+					&:nth-of-type(6),
+					&:nth-of-type(7),
+					&:nth-of-type(8) {
+						display: none;
+					}
+				}
+				@media #{$mobile} {
+					width: 49%;
+					height: 280px;
+					margin-right: 0;
+					&:nth-child(odd) {
+						margin-right: 2%;
+					}
+				}
+				> .frame {
+					position: relative;
+					@include frame;
+					> img {
+						@include img;
+						transition: all 0.5s;
+					} //end of img
+					&:hover:after {
+						@include imgEffect;
+					}
+					&:hover > img {
+						transform: scale(1.1);
+					}
+				} //end of .frame
+				> .type {
+					@include typePc;
+					@media #{$tablet} {
+						margin: 8px 0;
+					}
+				} //end of .type
+				> .tit {
+					@include titP;
+					@media #{$tablet} {
+						font-size: 13px;
+					}
+					@media #{$mobile} {
+						font-size: 13px;
+					}
+				} //endn of .tit
+				> .issue {
+					@include issueP;
+					@media #{$tablet} {
+						display: none;
+					}
+					> span {
+						display: block;
+					}
+				} //end of .issue
+			} //end of li
+		} //end of ol
+	} //end of .new
+	> .eshopBar {
+		> a {
+			display: block;
+			height: 140px;
+			@include ir;
+			background-image: url(../images/ntd-sect-buyCard.gif);
+			background-position: 50% 50%;
+			@media #{$tablet} {
+				height: 100px;
+			}
+		} //end of a
+	} //end of .buyCard
+	> .mainGame {
+		width: 1200px;
+		margin: 80px auto;
+		@media #{$tablet} {
+			width: 95%;
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+		@media #{$mobile} {
+			position: relative;
+			// overflow: hidden;
+			width: 90%;
+			margin: 0 auto 30px;
+		}
+		> h2 {
+			font-size: 26px;
+			margin-bottom: 30px;
+			@media #{$tablet} {
+				font-size: 22px;
+				margin-bottom: 20px;
+			}
+			@media #{$mobile} {
+				margin-bottom: 15px;
+				margin-top: 15px;
+			}
+			> span {
+				@include subTit;
+				@media #{$tablet} {
+					display: none;
+				}
+			} //end of span
+		} //end of h2
+		> ul {
+			@include lineUp;
+			@media #{$mobile} {
+				position: relative;
+				left: 0;
+				top: 0;
+				width: 800%;
+			}
+			> li {
+				position: relative;
+				width: 24%;
+				height: 290px;
+				margin-bottom: 30px;
+				@media #{$tablet} {
+					height: 220px;
+					margin-bottom: 20px;
+				}
+				@media #{$mobile} {
+					width: calc(100% / 8);
+					height: 100%;
+					margin: 0;
+				}
+				> p {
+					@media #{$mobile} {
+						display: none;
+					}
+				}
+				> .frame {
+					position: relative;
+					@include frame;
+					@media #{$mobile} {
+						// width: 100%;
+					}
+					> img {
+						@include img;
+						transition: all 0.5s;
+					} //end of img
+					&:hover:after {
+						@include imgEffect;
+					}
+					&:hover > img {
+						transform: scale(1.1);
+					}
+				} //end of .frame
+				> .type {
+					@include typePc;
+					@media #{$tablet} {
+						margin: 8px 0;
+					}
+					@media #{$mobile} {
+						font-size: 14px;
+					}
+					&:before {
+						position: absolute;
+						top: 0;
+						right: 30px;
+						width: 22px;
+						height: 16px;
+						color: #fff;
+						font-weight: 600;
+						font-size: 10px;
+						line-height: 16px;
+						text-align: center;
+						background-color: $nintendo-color;
+						border-radius: 4px;
+						content: "PK";
+					}
+					&:after {
+						position: absolute;
+						top: 0;
+						right: 0;
+						width: 22px;
+						height: 16px;
+						color: #fff;
+						font-weight: 600;
+						font-size: 10px;
+						line-height: 16px;
+						text-align: center;
+						background-color: $nintendo-color;
+						border-radius: 4px;
+						content: "DL";
+					}
+
+					@media #{$tablet} {
+						margin: 8px 0;
+					}
+				} //end of .type
+				> .tit {
+					@include titP;
+					@media #{$tablet} {
+						font-size: 13px;
+					}
+					@media #{$mobile} {
+						font-size: 13px;
+					}
+				} //endn of .tit
+				> .issue {
+					@include issueP;
+					@media #{$tablet} {
+						display: none;
+					}
+					> span {
+						display: block;
+					}
+				} //end of .issue
+				> .kor {
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					width: 59px;
+					height: 36px;
+					@include ir;
+					background-image: url(../images/ntd-sect-ico_lang.png);
+					background-position: 0 -116px;
+				} //end of .kor
+				&:nth-of-type(7) > .type:before {
+					right: 0;
+				}
+				&:nth-of-type(7) > .type:after {
+					display: none;
+				}
+			} //end of li
+		} //end of ul
+		> .slide-navi {
+			display: none;
+			@media #{$mobile} {
+				display: block;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				background: rgba(0, 0, 0, 0.5);
+			}
+			> p {
+				@media #{$mobile} {
+					height: 50px;
+					font-size: 18px;
+					font-weight: 800;
+					line-height: 50px;
+					text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+					text-align: center;
+				}
+			} //end of p
+			> a {
+				@media #{$mobile} {
+					display: block;
+					position: absolute;
+					top: 50%;
+					width: 22px;
+					height: 35px;
+					margin-top: -18px;
+					background-image: url(../images/ntd-sect-slide-arr.png);
+					@include ir;
+					background-size: cover;
+				}
+			} //end of a
+			.slide-prev {
+				@media #{$mobile} {
+					left: 20px;
+				}
+			} //end of .slide-prev
+			.slide-next {
+				@media #{$mobile} {
+					background-position: -23px 0;
+					right: 20px;
+				}
+			} //end of .slide-next
+		} //end of .slide-navi
+	} //end of .mainGame
+	> .video {
+		display: flex;
+		justify-content: space-between;
+		width: 1200px;
+		margin: 0 auto;
+		@media #{$tablet} {
+			width: 95%;
+			margin-bottom: 0;
+		}
+		@media #{$mobile} {
+			display: initial;
+		}
+		> a {
+			display: block;
+			width: 373px;
+			height: 140px;
+			@include ir;
+			@media #{$tablet} {
+				width: 280px;
+				background-size: contain;
+			}
+			@media #{$mobile} {
+				width: 90%;
+				height: 150px;
+				margin: 0 auto 10px;
+				background-position: center center;
+			}
+			&:nth-of-type(1) {
+				background-image: url(../images/ntd-sect-video_01.jpg);
+			}
+			&:nth-of-type(2) {
+				background-image: url(../images/ntd-sect-video_02.jpg);
+			}
+			&:nth-of-type(3) {
+				background-image: url(../images/ntd-sect-video_03.jpg);
+				@media #{$mobile} {
+					margin-bottom: 30px;
+				}
+			}
+		} //end of a
+	} //end of viedeo
+	> .dnld {
+		width: 1200px;
+		margin: 80px auto 0;
+		@media #{$tablet} {
+			width: 95%;
+		}
+		> h2 {
+			font-size: 26px;
+			text-align: center;
+			@media #{$tablet} {
+				font-size: 22px;
+			}
+			@media #{$mobile} {
+				width: 340px;
+				margin: 0 auto;
+			}
+		} //end of h2
+		> ol {
+			display: flex;
+			height: 120px;
+			margin-top: 20px;
+			border: 1px solid $grey;
+			@media #{$tablet} {
+				display: block;
+				height: initial;
+			}
+			> li {
+				overflow: hidden;
+				position: relative;
+				width: 33.33333%;
+				border-right: 1px solid $grey;
+				@media #{$tablet} {
+					width: 100%;
+					border-right: 0;
+				}
+				&:last-child {
+					border-right: none;
+				}
+				&:before {
+					position: absolute;
+					top: 50%;
+					left: 50px;
+					width: 60px;
+					height: 60px;
+					margin-top: -30px;
+					@include ir;
+					background-image: url(../images/ntd-sect-unit_icon.png);
+					content: "";
+					@media #{$tablet} {
+						left: 60px;
+						width: 46px;
+						height: 46px;
+						margin-top: -23px;
+						background-size: cover;
+					}
+					@media #{$mobile} {
+						left: 25px;
+					}
+				}
+				&:nth-child(1):before {
+					background-position: 0 -30px;
+					@media #{$tablet} {
+						background-position: 0 -23px;
+					}
+				}
+				&:nth-child(2):before {
+					background-position: 0 -149px;
+					@media #{$tablet} {
+						background-position: 0 -114px;
+					}
+				}
+				&:nth-child(3):before {
+					background-position: 0 -268px;
+					@media #{$tablet} {
+						background-position: 0 -206px;
+					}
+				}
+				> a {
+					display: block;
+					position: absolute;
+					top: 50%;
+					left: 130px;
+					width: 240px;
+					height: 50px;
+					margin-top: -25px;
+					color: #111;
+					font-size: 17px;
+					@media #{$tablet} {
+						position: initial;
+						height: 80px;
+						width: 100%;
+						margin: 0;
+						margin-bottom: -20px;
+						padding-top: 20px;
+						padding-left: 140px;
+						font-size: 16px;
+						border-top: 1px solid $grey;
+					}
+					@media #{$mobile} {
+						height: 70px;
+						margin-bottom: -15px;
+						padding-top: 15px;
+						padding-left: 100px;
+					}
+					&:after {
+						position: absolute;
+						width: 6px;
+						height: 10px;
+						background-image: url(../images/ntd-sect-dnld_arrow.png);
+						content: "";
+					}
+				} //end of a
+				&:nth-child(1) > a {
+					line-height: 50px;
+					@media #{$tablet} {
+						padding-top: 0;
+						margin: 0;
+						line-height: 80px;
+						border-top: 0;
+					}
+					@media #{$mobile} {
+						line-height: 70px;
+					}
+				}
+				&:nth-child(1) > a:after {
+					top: 50%;
+					right: 85px;
+					margin-top: -5px;
+					@media #{$tablet} {
+						left: 285px;
+					}
+					@media #{$mobile} {
+						left: 245px;
+					}
+				}
+				&:nth-child(2) > a:after {
+					top: 29px;
+					right: 55px;
+					@media #{$tablet} {
+						top: 46px;
+						left: 315px;
+					}
+					@media #{$mobile} {
+						top: 41px;
+						left: 275px;
+					}
+				}
+				&:nth-child(3) > a:after {
+					top: 29px;
+					right: 20px;
+					@media #{$tablet} {
+						top: 46px;
+						left: 345px;
+					}
+					@media #{$mobile} {
+						top: 41px;
+						left: 305px;
+					}
+				}
+			} //end of li
+		} //end of ol
+	} //end of .dlnd
+	> .notice {
+		display: flex;
+		position: relative;
+		width: 1200px;
+		height: 50px;
+		margin: 80px auto;
+		padding: 10px 0;
+		border-top: 1px solid $grey;
+		border-bottom: 1px solid $grey;
+		@media #{$tablet} {
+			width: 95%;
+		}
+		@media #{$mobile} {
+			width: 100%;
+			margin-bottom: 0;
+		}
+		> h2 {
+			width: 230px;
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 50px;
+			@media #{$tablet} {
+				width: 170px;
+			}
+			@media #{$mobile} {
+				display: none;
+			}
+		} //end of h2
+		> .plus {
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 110px;
+			width: 20px;
+			height: 20px;
+			margin-top: -10px;
+			text-indent: -9999px;
+			border: 1px solid #d6d6d6;
+			border-radius: 3px;
+			@media #{$mobile} {
+				display: none;
+			}
+			&:before {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: 8px;
+				height: 8px;
+				margin: -4px 0 0 -4px;
+				background-image: url(../images/ntd_ico_plus.png);
+				background-size: contain;
+				@include ir;
+				content: "";
+			}
+		} //end of .plus
+		> ul {
+			display: flex;
+			width: 80%;
+			@media #{$tablet} {
+				display: initial;
+				overflow: hidden;
+			}
+			@media #{$mobile} {
+				width: 100%;
+				margin: 0 10px;
+			}
+			> li {
+				overflow: hidden;
+				position: relative;
+				width: 50%;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+
+				@media #{$tablet} {
+					width: 100%;
+				}
+				> a {
+					display: block;
+					position: relative;
+					padding-left: 10px;
+					color: #6a6a6a;
+					font-size: 15px;
+					line-height: 50px;
+					@media #{$mobile} {
+						overflow: hidden;
+						padding-left: 40px;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+					&:before {
+						position: absolute;
+						top: 50%;
+						left: 0;
+						width: 4px;
+						height: 4px;
+						margin-top: -2px;
+						background-color: $nintendo-color;
+						border-radius: 50%;
+						content: "";
+						@media #{$mobile} {
+							left: 30px;
+						}
+					}
+				} //end of a
+			} //end of li
+		} //end of ul
+	} //end of .notice
+	> .gotoTop {
+		width: 100%;
+		height: 100px;
+		background-color: $nintendo-color;
+		@media #{$tablet} {
+			height: 40px;
+		}
+		> div {
+			position: relative;
+			width: 1200px;
+			height: 100%;
+			margin: 0 auto;
+			@media #{$tablet} {
+				width: 100%;
+			}
+			&:before {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				width: 122px;
+				height: 29px;
+				margin-top: -15px;
+				@include ir;
+				background-image: url(../images/ntd-logo.png);
+				content: "";
+				@media #{$tablet} {
+					left: 50%;
+					width: 100px;
+					height: 26px;
+					margin-top: -13px;
+					margin-left: -50px;
+					background-position: 0 -15px;
+					background-size: cover;
+				}
+				@media #{$mobile} {
+					margin-left: -5%;
+				}
+			}
+			> a {
+				display: block;
+				position: absolute;
+				top: 50%;
+				right: 0;
+				width: 20px;
+				height: 20px;
+				margin-top: -10px;
+				text-indent: -9999px;
+				border: 2px solid #fff;
+				border-radius: 50%;
+				transition: all 0.2s;
+				@media #{$tablet} {
+					right: 30px;
+				}
+				&:hover {
+					width: 60px;
+					padding-left: 5px;
+					color: $nintendo-color;
+					font-weight: 600;
+					line-height: 20px;
+					text-indent: 0;
+					background-color: #fff;
+					border-radius: 10px;
+				}
+				&:before {
+					position: absolute;
+					top: 50%;
+					right: 3.5px;
+					width: 12px;
+					height: 7px;
+					margin-top: -4px;
+					@include ir;
+					background-image: url(../images/ntd-sect-gotoTop-ico.png);
+					content: "";
+				}
+				&:hover:before {
+					background-image: url(../images/ntd-sect-gotoTop-ico-red.png);
+				}
+			} //end of a
+		} //end of div
+	} //end of .gotoTop
+	> .share {
+		width: 1200px;
+		height: 150px;
+		margin: 0 auto;
+		@media #{$tablet} {
+			width: 95%;
+			height: 230px;
+		}
+		@media #{$mobile} {
+			width: 100%;
+		}
+		> .share-contaienr {
+			position: relative;
+			height: 100%;
+			padding: 0 25px;
+			margin: 0 25px;
+			> .btn-share {
+				display: flex;
+				justify-content: space-between;
+				position: absolute;
+				top: 50%;
+				left: 0;
+				width: 230px;
+				margin-top: -30px;
+				@media #{$tablet} {
+					top: 70px;
+					left: 50%;
+					margin-left: -115px;
+				}
+				@media #{$mobile} {
+					width: 150px;
+					margin-left: -75px;
+				}
+				> li {
+					width: 60px;
+					@media #{$mobile} {
+						width: 40px;
+					}
+					> a {
+						display: block;
+						height: 60px;
+						@include ir;
+						background-image: url(../images/ntd-sect-share-icons.png);
+						@media #{$mobile} {
+							height: 40px;
+							border-radius: 5px;
+						}
+					}
+					&:nth-child(1) > a {
+						background-position: 0 -160px;
+						@media #{$mobile} {
+							background-position: -10px -170px;
+						}
+					}
+					&:nth-child(2) > a {
+						background-position: -70px -160px;
+						@media #{$mobile} {
+							background-position: -80px -170px;
+						}
+					}
+					&:nth-child(3) > a {
+						background-position: -140px -160px;
+						@media #{$mobile} {
+							background-position: -150px -170px;
+						}
+					}
+				}
+			} //end of .btn-share
+			> .btn-account {
+				display: flex;
+				justify-content: space-between;
+				position: absolute;
+				top: 50%;
+				right: 0;
+				width: 760px;
+				margin-top: -30px;
+				@media #{$tablet} {
+					top: 150px;
+					right: 50%;
+					margin-right: -380px;
+				}
+				@media #{$mobile} {
+					display: block;
+					width: 80%;
+					top: 100px;
+					margin-top: 0;
+					margin-right: -40%;
+				}
+				> a {
+					display: block;
+					width: 370px;
+					height: 60px;
+					@include ir;
+					background-image: url(../images/ntd-sect-share-icons.png);
+					@media #{$mobile} {
+						overflow: hidden;
+						width: 80%;
+						height: 40px;
+						margin: 0 auto;
+						background-image: none;
+						border-radius: 5px;
+					}
+					&:nth-child(1) {
+						@media #{$mobile} {
+							position: relative;
+							background-color: $nintendo-color;
+							background-position: 0 -300px;
+							&:nth-child(1):before {
+								position: absolute;
+								top: 0;
+								left: 50%;
+								width: 250px;
+								height: 40px;
+								margin-left: -125px;
+								@include ir;
+								background-size: cover;
+								background-image: url(../images/ntd-sect-share-icons.png);
+								background-position: 0 -192px;
+								content: "";
+							}
+						}
+					}
+					&:nth-child(2) {
+						@include ir;
+						background-image: url(../images/ntd-sect-share-amiibo.png);
+						@media #{$mobile} {
+							position: relative;
+							margin-top: 10px;
+							background-color: #fff;
+							border: 1px solid #dedede;
+							background-image: none;
+							&:before {
+								position: absolute;
+								width: 220px;
+								height: 40px;
+								top: 0;
+								left: 50%;
+								margin-left: -110px;
+								@include ir;
+								background-image: url(../images/ntd-sect-share-amiibo.png);
+								background-position: -70px -10px;
+
+								content: "";
+							}
+						}
+					}
+				}
+			} //end of .btn-account
+		} //end of.share-contaienr
+	} //end of .share
+	> .sect-mnu {
+		position: relative;
+		width: 1020px;
+		margin: 0 auto 30px;
+		@media #{$tablet} {
+			width: 100%;
+			margin-bottom: 50px;
+		}
+		@media #{$mobile} {
+			width: 100%;
+		}
+		> ul {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+			@media #{$mobile} {
+				display: block;
+			}
+			> li {
+				position: relative;
+				width: 200px;
+				@media #{$mobile} {
+					width: 100%;
+				}
+				&:before {
+					position: absolute;
+					top: 0;
+					left: 50%;
+					width: 18px;
+					height: 3px;
+					margin-left: -9px;
+					background-color: #e60012;
+					content: "";
+					@media #{$mobile} {
+						display: none;
+					}
+				}
+				> a {
+					display: block;
+					height: 40px;
+					line-height: 40px;
+					font-size: 15px;
+					font-weight: 600;
+					text-align: center;
+					@media #{$tablet} {
+						font-size: 12px;
+					}
+					@media #{$mobile} {
+						height: 50px;
+						padding-left: 20px;
+						font-size: 17px;
+						line-height: 50px;
+						text-align: initial;
+						border-bottom: 1px solid #d6d6d6;
+					}
+				} //end of a
+				.sect-mnu-sub {
+					@media #{$tablet} {
+						display: none;
+					}
+					@media #{$mobile} {
+						padding-top: 10px;
+						background-color: #f7f7f7;
+					}
+					> li {
+						> a {
+							display: block;
+							height: 25px;
+							line-height: 25px;
+							color: #737373;
+							font-size: 15px;
+							text-align: center;
+							@media #{$tablet} {
+								font-size: 12px;
+							}
+							@media #{$mobile} {
+								height: 30px;
+								padding-left: 20px;
+								font-size: 15px;
+								line-height: 30px;
+								text-align: initial;
+							}
+						} //end of a
+						&:last-child > a {
+							@media #{$mobile} {
+								padding-bottom: 10px;
+								border-bottom: 1px solid #d6d6d6;
+							}
+						}
+					} //end of li
+				} //end of  .sect-mnu-sub
+			} //end of li
+		} //end of ul
+	} //end of .sect-mnu
+} //end of section
+footer {
+	> address {
+		width: 100%;
+		padding: 30px 0;
+		color: #737373;
+		font-size: 14px;
+		background-color: #f7f7f7;
+		@media #{$tablet} {
+			position: relative;
+			width: 100%;
+			height: 100px;
+		}
+		@media #{$mobile} {
+			height: 180px;
+			font-size: 13px;
+		}
+
+		> .footer-container {
+			float: left;
+			height: 70px;
+			margin-left: 80px;
+			@media #{$tablet} {
+				height: initial;
+				margin-left: 30px;
+			}
+			> .terms {
+				display: flex;
+				> p {
+					padding: 0 10px;
+					&:first-child {
+						padding-left: 0;
+						border-right: 1px solid #afafaf;
+					}
+				} //end of p
+			} //end of .terms
+
+			> .companyInfo {
+				@media #{$tablet} {
+					position: absolute;
+					top: 85px;
+					left: 30px;
+				}
+				@media #{$mobile} {
+					top: 130px;
+				}
+				> p {
+					margin: 5px 0;
+				} //end of p
+				> span {
+					padding-right: 20px;
+					@media #{$mobile} {
+						padding-right: 8px;
+					}
+					&:last-child {
+						padding-right: 0;
+					}
+				} //end of span
+			} //end of .companyInfo
+		} //end of footer-container
+		> .support {
+			float: right;
+			margin-right: 80px;
+			text-align: right;
+			@media #{$tablet} {
+				display: flex;
+				float: left;
+				position: absolute;
+				top: 60px;
+				left: 0;
+				margin-left: 30px;
+				text-align: initial;
+			}
+			@media #{$mobile} {
+				display: initial;
+				top: 60px;
+			}
+			> span {
+				@media #{$mobile} {
+					display: block;
+					line-height: 1.5;
+				}
+			} //end of span
+			> p {
+				margin-top: 25px;
+				font-size: 12px;
+				@media #{$tablet} {
+					margin-top: 3px;
+					margin-left: 5px;
+				}
+				@media #{$mobile} {
+					margin-left: 0;
+					font-size: 13px;
+				}
+			}
+		} //end of .support
+	} //end of address
+} //end of footer
